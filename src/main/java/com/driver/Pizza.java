@@ -30,15 +30,15 @@ public class Pizza {
         if(flag1){
             this.price += 80;
 
-            if(flag1 && !flag2){
-
-                bill+="Extra Cheese Added: 80 \n";
-                bill+="Extra Toppings Added: 70 \n";
-
-            }
-            else{
-
-            }
+//            if(flag1 && !flag2){
+//
+//                bill+="Extra Cheese Added: 80 \n";
+//                bill+="Extra Toppings Added: 70 \n";
+//
+//            }
+//            else{
+//
+//            }
             flag1 = false;
         }
 
@@ -51,20 +51,22 @@ public class Pizza {
         if(flag2){
             if(this.isVeg){
                 this.price+=70;
-                if(!flag1){
-                    bill+="Extra Cheese Added: 80 \n" ;
-                    bill+="Extra Toppings Added: 70 \n";
-
-                }
+//                if(!flag1){
+//                    bill+="Extra Cheese Added: 80 \n" ;
+//                    bill+="Extra Toppings Added: 70 \n";
+//                    System.out.println("Done");
+//
+//                }
 
 
             }
             else{
                 this.price+=120;
-                if(!flag1){
-                    bill+="Extra Cheese Added: 80 \n" ;
-                    bill+="Extra Toppings Added: 120 \n";
-                }
+//                if(!flag1){
+//                    bill+="Extra Cheese Added: 80 \n" ;
+//                    bill+="Extra Toppings Added: 120 \n";
+//                    System.out.println("Done");
+//                }
 
             }
             flag2 =  false;
@@ -87,13 +89,15 @@ public class Pizza {
 
     public String getBill(){
         // your code goes here
-        if(!flag1 && flag2){
+        if(!flag1){
             bill+="Extra Cheese Added: 80 \n" ;
         }
-        else if(!flag2 && flag1){
+
+        if(!flag2){
             if(isVeg) bill+="Extra Toppings Added: 70 \n";
             else bill+="Extra Toppings Added: 120 \n";
         }
+
         if(!flag3) bill+="Paperbag Added: 20 \n";
         bill+="Total Price: "+ this.price;
         return this.bill;
