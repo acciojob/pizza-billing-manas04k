@@ -29,15 +29,6 @@ public class Pizza {
         if(flag1){
             this.price += 80;
 
-//            if(flag1 && !flag2){
-//
-//                bill+="Extra Cheese Added: 80 \n";
-//                bill+="Extra Toppings Added: 70 \n";
-//
-//            }
-//            else{
-//
-//            }
             flag1 = false;
         }
 
@@ -50,23 +41,9 @@ public class Pizza {
         if(flag2){
             if(this.isVeg){
                 this.price+=70;
-//                if(!flag1){
-//                    bill+="Extra Cheese Added: 80 \n" ;
-//                    bill+="Extra Toppings Added: 70 \n";
-//                    System.out.println("Done");
-//
-//                }
-
-
             }
             else{
                 this.price+=120;
-//                if(!flag1){
-//                    bill+="Extra Cheese Added: 80 \n" ;
-//                    bill+="Extra Toppings Added: 120 \n";
-//                    System.out.println("Done");
-//                }
-
             }
             flag2 =  false;
         }
@@ -86,23 +63,28 @@ public class Pizza {
 
     }
 
-    public String getBill(){
+    boolean flag4 = true;
+    public String getBill() {
         // your code goes here
-        if(isVeg)  bill="Base Price Of The Pizza: 300 \n";
-        else  bill="Base Price Of The Pizza: 400 \n";
+        if (flag4) {
+            if (isVeg) this.bill = "Base Price Of The Pizza: 300 \n";
+            else this.bill = "Base Price Of The Pizza: 400 \n";
 
-        if(!flag1){
-            bill+="Extra Cheese Added: 80 \n" ;
+            if (!flag1) {
+                this.bill += "Extra Cheese Added: 80 \n";
+            }
+
+            if (!flag2) {
+                if (isVeg) this.bill += "Extra Toppings Added: 70 \n";
+                else this.bill += "Extra Toppings Added: 120 \n";
+            }
+
+            if (!flag3) this.bill += "Paperbag Added: 20 \n";
+            this.bill += "Total Price: " + this.price + "\n";
+            flag4 = false;
+            return this.bill;
         }
-
-        if(!flag2){
-            if(isVeg) bill+="Extra Toppings Added: 70 \n";
-            else bill+="Extra Toppings Added: 120 \n";
-        }
-
-        if(!flag3) bill+="Paperbag Added: 20 \n";
-        bill+="Total Price: "+ this.price + "\n";
-        return bill;
-
+        return " ";
     }
+
 }
