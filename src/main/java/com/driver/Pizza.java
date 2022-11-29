@@ -9,26 +9,94 @@ public class Pizza {
     public Pizza(Boolean isVeg){
         this.isVeg = isVeg;
         // your code goes here
+        if(isVeg){
+            price+=300;
+            bill="Base Price Of The Pizza: 300 \n";
+        }
+        else{
+            price+=400;
+            bill="Base Price Of The Pizza: 400 \n";
+        }
+
     }
 
     public int getPrice(){
         return this.price;
     }
 
+    boolean flag1 = true;
     public void addExtraCheese(){
         // your code goes here
+        if(flag1){
+            this.price += 80;
+
+            if(flag1 && !flag2){
+
+                bill+="Extra Cheese Added: 80 \n";
+                bill+="Extra Toppings Added: 70 \n";
+
+            }
+            else{
+
+            }
+            flag1 = false;
+        }
+
+
     }
 
+    boolean flag2 = true;
     public void addExtraToppings(){
         // your code goes here
+        if(flag2){
+            if(this.isVeg){
+                this.price+=70;
+                if(!flag1){
+                    bill+="Extra Cheese Added: 80 \n" ;
+                    bill+="Extra Toppings Added: 70 \n";
+
+                }
+
+
+            }
+            else{
+                this.price+=120;
+                if(!flag1){
+                    bill+="Extra Cheese Added: 80 \n" ;
+                    bill+="Extra Toppings Added: 120 \n";
+                }
+
+            }
+            flag2 =  false;
+        }
+
     }
 
+    boolean flag3 = true;
     public void addTakeaway(){
+
         // your code goes here
+        if(flag3){
+            this.price+=20;
+
+            flag3 = false;
+        }
+
+
     }
 
     public String getBill(){
         // your code goes here
+        if(!flag1 && flag2){
+            bill+="Extra Cheese Added: 80 \n" ;
+        }
+        else if(!flag2 && flag1){
+            if(isVeg) bill+="Extra Toppings Added: 70 \n";
+            else bill+="Extra Toppings Added: 120 \n";
+        }
+        if(!flag3) bill+="Paperbag Added: 20 \n";
+        bill+="Total Price: "+ this.price;
         return this.bill;
+
     }
 }
